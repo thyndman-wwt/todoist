@@ -4,6 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
+import { useAuth } from '../hooks';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
 
@@ -21,8 +22,11 @@ export const AddTask = ({
   const [showTaskDate, setShowTaskDate] = useState(false);
 
   const { selectedProject } = useSelectedProjectValue();
+  const { user } = useAuth();
 
   const addTask = () => {
+    if (!user) return false;
+
     const projectId = project || selectedProject;
     let collatedDate = '';
 
@@ -43,7 +47,7 @@ export const AddTask = ({
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: 'jlIFXIwyAL3tzHMtzRbw',
+          userId: user.uid,
         })
         .then(() => {
           setTask('');
@@ -128,38 +132,32 @@ export const AddTask = ({
             type="button"
             className="add-task__submit"
             data-testid="add-task"
-            onClick={() =>
-              showQuickAddTask
-                ? addTask() && setShowQuickAddTask(false)
-                : addTask()
-            }
+            onClick={() => addTask()}
           >
             Add Task
           </button>
-          {!showQuickAddTask && (
-            <span
-              className="add-task__cancel"
-              data-testid="add-task-main-cancel"
-              onClick={() => {
+          <span
+            className="add-task__cancel"
+            data-testid="add-task-cancel"
+            onClick={() => {
+              setShowMain(false);
+              setShowProjectOverlay(false);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
                 setShowMain(false);
                 setShowProjectOverlay(false);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setShowMain(false);
-                  setShowProjectOverlay(false);
-                }
-              }}
-              aria-label="Cancel adding a task"
-              tabIndex={0}
-              role="button"
-            >
-              Cancel
-            </span>
-          )}
+              }
+            }}
+            tabIndex={0}
+            aria-label="Cancel adding task"
+            role="button"
+          >
+            Cancel
+          </span>
           <span
             className="add-task__project"
-            data-testid="show-project-overlay"
+            data-testid="add-task-project-overlay"
             onClick={() => setShowProjectOverlay(!showProjectOverlay)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') setShowProjectOverlay(!showProjectOverlay);
@@ -171,7 +169,7 @@ export const AddTask = ({
           </span>
           <span
             className="add-task__date"
-            data-testid="show-task-date-overlay"
+            data-testid="add-task-task-date"
             onClick={() => setShowTaskDate(!showTaskDate)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') setShowTaskDate(!showTaskDate);
