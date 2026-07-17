@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { firebase } from '../firebase';
 import { generatePushId } from '../helpers';
 import { useProjectsValue } from '../context';
+import { useAuth } from '../hooks';
 
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
@@ -10,22 +11,28 @@ export const AddProject = ({ shouldShow = false }) => {
 
   const projectId = generatePushId();
   const { projects, setProjects } = useProjectsValue();
+  const { user } = useAuth();
 
-  const addProject = () =>
-    projectName &&
-    firebase
-      .firestore()
-      .collection('projects')
-      .add({
-        projectId,
-        name: projectName,
-        userId: 'jlIFXIwyAL3tzHMtzRbw',
-      })
-      .then(() => {
-        setProjects([...projects]);
-        setProjectName('');
-        setShow(false);
-      });
+  const addProject = () => {
+    if (!user) return false;
+
+    return (
+      projectName &&
+      firebase
+        .firestore()
+        .collection('projects')
+        .add({
+          projectId,
+          name: projectName,
+          userId: user.uid,
+        })
+        .then(() => {
+          setProjects([...projects]);
+          setProjectName('');
+          setShow(false);
+        })
+    );
+  };
 
   return (
     <div className="add-project" data-testid="add-project">
