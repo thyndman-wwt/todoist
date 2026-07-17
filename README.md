@@ -41,3 +41,7 @@ The test suite uses React Testing Library and is configured with Jest. Tests wil
 ### Test Coverage
 
 The project is configured with coverage thresholds requiring 90% coverage for branches, functions, lines, and statements. Coverage reports are generated in HTML and text formats.
+
+## License
+
+This project is licensed under the MIT License.
