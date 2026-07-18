@@ -84,6 +84,10 @@ The test suite uses React Testing Library and is configured with Jest. Tests wil
 
 The project is configured with coverage thresholds requiring 90% coverage for branches, functions, lines, and statements. Coverage reports are generated in HTML and text formats.
 
+## Support
+
+Have a question or found a bug? Please [open an issue](https://github.com/thyndman-wwt/todoist/issues) on GitHub and we'll help you out!
+
 ## License
 
 This project is licensed under the MIT License.
