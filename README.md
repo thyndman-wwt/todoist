@@ -6,7 +6,7 @@ Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build
 
 ![Preview](todoist-preview.png?raw=true)
 
-## Running Tests
+## Development
 
 ### Install Dependencies
 
@@ -21,6 +21,40 @@ or
 ```bash
 yarn install
 ```
+
+### Run the App Locally
+
+To start the development server and run the app locally:
+
+```bash
+npm start
+```
+
+or
+
+```bash
+yarn start
+```
+
+The app will open in your browser at `http://localhost:3000`. The page will reload when you make changes to the code.
+
+### Build for Production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+or
+
+```bash
+yarn build
+```
+
+The build artifacts will be stored in the `build/` directory.
+
+## Running Tests
 
 ### Run the Test Suite
 
