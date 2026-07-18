@@ -6,6 +6,14 @@ Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build
 
 ![Preview](todoist-preview.png?raw=true)
 
+## Tech Stack
+
+This project is built with the following technologies:
+
+- **React** - A JavaScript library for building user interfaces with custom hooks and Context API
+- **SCSS** - A CSS preprocessor for styling and theming (including dark mode support)
+- **Jest** - A JavaScript testing framework for unit and integration tests
+
 ## Development
 
 ### Install Dependencies
