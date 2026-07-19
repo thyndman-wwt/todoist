@@ -6,6 +6,8 @@ Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build
 
 ![Preview](todoist-preview.png?raw=true)
 
+// TODO: Add pagination support to all list endpoints and update the frontend to use it.
+
 ## Tech Stack
 
 This project is built with the following technologies:
