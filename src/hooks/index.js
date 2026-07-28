@@ -5,6 +5,23 @@ import { firebase } from '../firebase';
 import { collatedTasksExist } from '../helpers';
 import { useAuth } from './useAuth';
 
+/**
+ * Custom hook for fetching and managing tasks for a selected project.
+ * Handles filtering tasks based on project type (regular, collated, or date-based).
+ * Automatically updates when the selected project changes.
+ *
+ * @param {string} selectedProject - The currently selected project ID or collated task key
+ * @returns {Object} Object containing tasks and archivedTasks arrays
+ * @returns {Array<Object>} tasks - Array of active (non-archived) tasks
+ * @returns {Array<Object>} archivedTasks - Array of archived tasks
+ *
+ * @example
+ * const { tasks, archivedTasks } = useTasks('proj123');
+ *
+ * @example
+ * // For collated tasks
+ * const { tasks } = useTasks('TODAY');
+ */
 export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
@@ -55,6 +72,18 @@ export const useTasks = selectedProject => {
   return { tasks, archivedTasks };
 };
 
+/**
+ * Custom hook for fetching and managing user projects.
+ * Retrieves all projects belonging to the current user from Firestore.
+ * Automatically updates when projects change.
+ *
+ * @returns {Object} Object containing projects array and setProjects function
+ * @returns {Array<Object>} projects - Array of user's projects
+ * @returns {Function} setProjects - Function to update projects state
+ *
+ * @example
+ * const { projects, setProjects } = useProjects();
+ */
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
   const { user } = useAuth();

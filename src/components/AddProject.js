@@ -5,6 +5,23 @@ import { generatePushId } from '../helpers';
 import { useProjectsValue } from '../context';
 import { useAuth } from '../hooks';
 
+/**
+ * Component for adding new projects to the application.
+ * Displays a form to create a new project and add it to Firestore.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {boolean} [props.shouldShow=false] - Whether the input form should be shown initially
+ * @returns {React.ReactElement} The add project component with input form and action buttons
+ *
+ * @example
+ * // Basic usage
+ * <AddProject />
+ *
+ * @example
+ * // With form shown by default
+ * <AddProject shouldShow={true} />
+ */
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
   const [projectName, setProjectName] = useState('');
