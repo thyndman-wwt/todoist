@@ -3,6 +3,26 @@ import moment from 'moment';
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+/**
+ * Overlay component for selecting a due date when adding a task.
+ * Provides quick date selection options: Today, Tomorrow, and Next week.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Function} props.setTaskDate - Callback to set the selected date
+ * @param {boolean} props.showTaskDate - Whether the overlay should be visible
+ * @param {Function} props.setShowTaskDate - Callback to toggle overlay visibility
+ * @returns {React.ReactElement|null} The task date overlay or null if not shown
+ *
+ * @example
+ * const [taskDate, setTaskDate] = useState('');
+ * const [showDate, setShowDate] = useState(false);
+ * <TaskDate
+ *   setTaskDate={setTaskDate}
+ *   showTaskDate={showDate}
+ *   setShowTaskDate={setShowDate}
+ * />
+ */
 export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
     <div className="task-date" data-testid="task-date-overlay">

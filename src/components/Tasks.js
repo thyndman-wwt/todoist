@@ -6,6 +6,17 @@ import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 
+/**
+ * Component for displaying tasks for the selected project.
+ * Shows a list of tasks and provides the ability to add new tasks.
+ * Updates the document title based on the selected project.
+ *
+ * @component
+ * @returns {React.ReactElement} The tasks display component with task list and add task form
+ *
+ * @example
+ * <Tasks />
+ */
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();

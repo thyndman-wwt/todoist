@@ -9,6 +9,17 @@ import { Projects } from '../Projects';
 import { useSelectedProjectValue } from '../../context';
 import { AddProject } from '../AddProject';
 
+/**
+ * Sidebar component that displays navigation and project list.
+ * Provides quick access to Inbox, Today, and Next 7 days views.
+ * Also displays user projects and allows adding new projects.
+ *
+ * @component
+ * @returns {React.ReactElement} The sidebar with navigation and projects
+ *
+ * @example
+ * <Sidebar />
+ */
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState('inbox');
