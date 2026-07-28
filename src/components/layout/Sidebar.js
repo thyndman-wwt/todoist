@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   FaChevronDown,
   FaInbox,
@@ -9,6 +10,14 @@ import { Projects } from '../Projects';
 import { useSelectedProjectValue } from '../../context';
 import { AddProject } from '../AddProject';
 
+/**
+ * Sidebar component for navigation and project management.
+ * Displays quick access to Inbox, Today, and Next 7 days views.
+ * Also shows the list of user projects and allows adding new projects.
+ *
+ * @component
+ * @returns {React.ReactElement} The sidebar with navigation and projects
+ */
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState('inbox');

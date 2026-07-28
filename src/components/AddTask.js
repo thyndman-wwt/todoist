@@ -8,6 +8,18 @@ import { useAuth } from '../hooks';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
 
+/**
+ * Component for adding new tasks to the application.
+ * Provides both a quick add interface and a full form with project and date selection.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {boolean} [props.showAddTaskMain=true] - Whether to show the main add task button
+ * @param {boolean} [props.shouldShowMain=false] - Whether the main form should be shown initially
+ * @param {boolean} [props.showQuickAddTask] - Whether to show the quick add task overlay
+ * @param {Function} [props.setShowQuickAddTask] - Callback to set quick add task visibility
+ * @returns {React.ReactElement} The add task component with form and overlays
+ */
 export const AddTask = ({
   showAddTaskMain = true,
   shouldShowMain = false,

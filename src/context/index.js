@@ -1,3 +1,10 @@
+/**
+ * Context module that exports all context providers and hooks.
+ * Provides centralized access to global state management.
+ *
+ * @module context
+ */
+
 import {
   ProjectsContext,
   ProjectsProvider,
