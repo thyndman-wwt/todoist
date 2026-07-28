@@ -4,6 +4,17 @@ import PropTypes from 'prop-types';
 import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
 
+/**
+ * Component for displaying an individual project with delete functionality.
+ * Shows project name and provides a delete button with confirmation modal.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Object} props.project - The project object containing name and docId
+ * @param {string} props.project.name - The name of the project
+ * @param {string} props.project.docId - The Firestore document ID of the project
+ * @returns {React.ReactElement} The individual project display with delete option
+ */
 export const IndividualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
@@ -67,5 +78,8 @@ export const IndividualProject = ({ project }) => {
 };
 
 IndividualProject.propTypes = {
-  project: PropTypes.object.isRequired,
+  project: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    docId: PropTypes.string.isRequired,
+  }).isRequired,
 };

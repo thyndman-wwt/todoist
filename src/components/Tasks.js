@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Checkbox } from './Checkbox';
 import { AddTask } from './AddTask';
 import { useTasks } from '../hooks';
@@ -6,6 +7,14 @@ import { collatedTasks } from '../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../helpers';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 
+/**
+ * Component for displaying tasks for the selected project.
+ * Shows a list of tasks and provides the ability to add new tasks.
+ * Updates the document title to reflect the current project.
+ *
+ * @component
+ * @returns {React.ReactElement} The tasks display with list and add task form
+ */
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();

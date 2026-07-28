@@ -3,6 +3,17 @@ import moment from 'moment';
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+/**
+ * Component for selecting a date when adding a task.
+ * Provides quick options for Today, Tomorrow, and Next week.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Function} props.setTaskDate - Callback to set the selected date
+ * @param {boolean} props.showTaskDate - Whether the date picker should be visible
+ * @param {Function} props.setShowTaskDate - Callback to toggle date picker visibility
+ * @returns {React.ReactElement|null} The date picker overlay or null if not shown
+ */
 export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
     <div className="task-date" data-testid="task-date-overlay">

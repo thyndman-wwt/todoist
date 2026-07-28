@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { IndividualProject } from './IndividualProject';
 
+/**
+ * Component for rendering a list of projects in the sidebar.
+ * Each project is clickable to select it and shows delete functionality.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {boolean} [props.activeValue=null] - The initially active project value
+ * @returns {React.ReactElement|null} A list of project items or null if no projects
+ */
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);
   const { setSelectedProject } = useSelectedProjectValue();
