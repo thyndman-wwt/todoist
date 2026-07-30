@@ -84,6 +84,73 @@ The test suite uses React Testing Library and is configured with Jest. Tests wil
 
 The project is configured with coverage thresholds requiring 90% coverage for branches, functions, lines, and statements. Coverage reports are generated in HTML and text formats.
 
+### Troubleshooting
+
+#### Problem: `npm install` fails with dependency conflicts
+
+**Solution:** Clear your npm cache and try again:
+
+```bash
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+```
+
+If you're using yarn, try:
+
+```bash
+yarn cache clean
+rm -rf node_modules yarn.lock
+yarn install
+```
+
+#### Problem: Port 3000 is already in use
+
+**Solution:** You can specify a different port when starting the development server:
+
+```bash
+PORT=3001 npm start
+```
+
+or with yarn:
+
+```bash
+PORT=3001 yarn start
+```
+
+Alternatively, you can kill the process using port 3000:
+
+```bash
+# On macOS/Linux
+lsof -ti:3000 | xargs kill -9
+
+# On Windows
+netstat -ano | findstr :3000
+taskkill /PID <PID> /F
+```
+
+#### Problem: Dev server fails to hot reload on WSL (Windows Subsystem for Linux)
+
+**Solution:** WSL file system watchers have limitations. Add the following to your `package.json` to enable polling:
+
+```bash
+WATCHPACK_POLLING=true npm start
+```
+
+or with yarn:
+
+```bash
+WATCHPACK_POLLING=true yarn start
+```
+
+Alternatively, you can create a `.env` file in the project root with:
+
+```
+WATCHPACK_POLLING=true
+```
+
+This enables polling-based file watching instead of relying on native file system events, which resolves hot reload issues in WSL environments.
+
 ## License
 
 This project is licensed under the MIT License.
