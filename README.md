@@ -129,6 +129,28 @@ netstat -ano | findstr :3000
 taskkill /PID <PID> /F
 ```
 
+#### Problem: Dev server fails to hot reload on WSL (Windows Subsystem for Linux)
+
+**Solution:** WSL file system watchers have limitations. Add the following to your `package.json` to enable polling:
+
+```bash
+WATCHPACK_POLLING=true npm start
+```
+
+or with yarn:
+
+```bash
+WATCHPACK_POLLING=true yarn start
+```
+
+Alternatively, you can create a `.env` file in the project root with:
+
+```
+WATCHPACK_POLLING=true
+```
+
+This enables polling-based file watching instead of relying on native file system events, which resolves hot reload issues in WSL environments.
+
 ## License
 
 This project is licensed under the MIT License.
